@@ -660,7 +660,7 @@ if __name__ == "__main__":
 
     # Demostración: Dispositivo envía mensaje al servidor
     print_step(4, "ENVÍO DE MENSAJE DESDE DISPOSITIVO")
-    mensaje = b"Datos confidenciales del dispositivo IoT"
+    mensaje = input("Ingresa el mensaje que deseas enviar de forma segura: ").encode()
     print_status("DEVICE", f"Mensaje original: {mensaje.decode()}", "INFO")
     nonce, ciphertext = device.send_secure_message(mensaje)
 
