@@ -8,16 +8,26 @@ if ! python3 --version &>/dev/null; then
     exit 1 
 fi
 
+echo "Verificando pip3"
+if ! command -v pip3 &>/dev/null; then
+echo "Pip3 no está instalado, instalando pip3..."
+sudo apt install -y python3-pip
+
+fi
+
+sudo apt install -y python3-venv
+
 echo "Creando entorno virtual..."
 python3 -m venv venv
 source venv/bin/activate
 
 echo "Instalando dependencias..."
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 echo "Ejecutando proyecto..."
-python proyectoCripto.py --run
+python3 proyectoCripto.py --run
 
 read -p "Presiona Enter para continuar..."  
 
-deactivate
+
+
