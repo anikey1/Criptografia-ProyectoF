@@ -6,10 +6,18 @@ if ! python3 --version &>/dev/null; then
     sudo apt-get update && sudo apt-get install -y python3 python3-pip 
     echo "¡Python 3 instalado! Reinicia la consola y ejecuta este script nuevamente."
     exit 1 
-
-else
-    echo "Python ya está instalado. Instalando dependencias..."
-    python3 -m pip install -r requirements.txt
 fi
 
+echo "Creando entorno virtual..."
+python3 -m venv venv
+source venv/bin/activate
+
+echo "Instalando dependencias..."
+pip install -r requirements.txt
+
+echo "Ejecutando proyecto..."
+python proyectoCripto.py --run
+
 read -p "Presiona Enter para continuar..."  
+
+deactivate
